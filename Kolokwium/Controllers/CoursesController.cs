@@ -1,5 +1,4 @@
-﻿using Kolokwium.Dtos;
-using Kolokwium.Services;
+﻿using Kolokwium.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kolokwium.Controllers;
@@ -13,4 +12,4 @@ public class CoursesController(ICoursesService coursesService) : ControllerBase
     {
         return Ok(await coursesService.FindAllCoursesAsync(title, category));
     }
-}
+}   

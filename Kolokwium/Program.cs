@@ -11,6 +11,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 });
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<ICoursesService, CoursesService>();
+builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddDbContext<DbFirstContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
