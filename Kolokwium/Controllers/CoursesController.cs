@@ -9,8 +9,8 @@ namespace Kolokwium.Controllers;
 public class CoursesController(ICoursesService coursesService) : ControllerBase
 {
     [HttpGet]
-    public async Task<List<CourseDto>> FindAllCourses()
+    public async Task<IActionResult> FindAllCourses([FromQuery] string? title, [FromQuery] string? category)
     {
-        return await coursesService.FindAllCoursesAsync();
+        return Ok(await coursesService.FindAllCoursesAsync(title, category));
     }
 }

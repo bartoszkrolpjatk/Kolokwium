@@ -4,5 +4,5 @@ namespace Kolokwium.Services;
 
 public interface ICoursesService
 {
-    Task<List<CourseDto>> FindAllCoursesAsync();
+    Task<List<CourseDto>> FindAllCoursesAsync(string? title, string? category);
 }

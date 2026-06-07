@@ -6,9 +6,11 @@ namespace Kolokwium.Services;
 
 public class CoursesService(DbFirstContext dbContext) : ICoursesService
 {
-    public async Task<List<CourseDto>> FindAllCoursesAsync()
+    public async Task<List<CourseDto>> FindAllCoursesAsync(string? title, string? category)
     {
         return await dbContext.Courses
+            .Where(c => title == null || c.Title == title)
+            .Where(c => category == null || c.Category.Name == category)
             .Select(c => new CourseDto()
             {
                 Id = c.Id,
