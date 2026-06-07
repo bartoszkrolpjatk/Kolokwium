@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Kolokwium.Data;
+using Kolokwium.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<ICoursesService, CoursesService>();
 builder.Services.AddDbContext<DbFirstContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
